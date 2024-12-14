@@ -8,7 +8,8 @@ jobs:
     executor: self_runner/my-custom-executor
     steps:
       - run: |
-          git clone https://github.com/pengeman/myhome2.git --depth 1 -b release
+          git clone https://github.com/pengeman/myhome2.git --depth 1 -b release temp
+          mv temp/*  temp/.[!.]* . && rm -rf temp
       - self_runner/setup
       - run: |
           sumake docker-run-remote
